@@ -15,7 +15,7 @@ using Verse.Noise;
 
 namespace CommandPalette
 {
-    public class PaletteWindow: GameComponent
+    public class PaletteWindow : GameComponent
     {
         public static PaletteWindow Get { get; protected set; }
 
@@ -23,28 +23,30 @@ namespace CommandPalette
         {
             Get = this;
         }
+
         private Vector2 position;
-        private bool active;
-        private bool setFocus;
+        private bool    active;
+        private bool    setFocus;
 
         private static string _query = "";
+
         protected static string query
         {
             get => _query;
             set
             {
-                _query = value;
+                _query               = value;
                 _filteredDesignators = null;
             }
         }
 
-        private const int WIDTH = GIZMO_SIZE * 4 + MARGIN * 3;
-        private const int MARGIN = 6;
-        private const int SEARCH_HEIGHT = 50;
-        private const int GIZMO_SIZE = 75;
+        private const int WIDTH          = GIZMO_SIZE * 4 + MARGIN * 3;
+        private const int MARGIN         = 6;
+        private const int SEARCH_HEIGHT  = 50;
+        private const int GIZMO_SIZE     = 75;
         private const int PALETTE_HEIGHT = GIZMO_SIZE * 2 + MARGIN;
 
-        private const int FADE_OUT_START_DISTANCE = 10;
+        private const int FADE_OUT_START_DISTANCE  = 10;
         private const int FADE_OUT_FINISH_DISTANCE = 200;
 
         private static List<Designator> _allDesignators;
@@ -54,7 +56,8 @@ namespace CommandPalette
             get
             {
                 _allDesignators??=DefDatabase<DesignationCategoryDef>.AllDefsListForReading
-                                                                     .SelectMany( dcd => dcd.ResolvedAllowedDesignators )
+                                                                     .SelectMany(
+                                                                          dcd => dcd.ResolvedAllowedDesignators )
                                                                      .Distinct( new DesignatorEqualityComparer() )
                                                                      .ToList();
                 return _allDesignators;
@@ -63,7 +66,8 @@ namespace CommandPalette
 
         private static Dictionary<Designator, ArchitectCategoryTab> _designatorsByCategory;
 
-        private static FieldInfo _architectCategoryTabFieldInfo = AccessTools.Field( typeof( MainTabWindow_Architect ), "desPanelsCached" );
+        private static FieldInfo _architectCategoryTabFieldInfo =
+            AccessTools.Field( typeof( MainTabWindow_Architect ), "desPanelsCached" );
 
         public static Dictionary<Designator, ArchitectCategoryTab> DesignatorsByCategory
         {
@@ -72,7 +76,7 @@ namespace CommandPalette
                 if ( _designatorsByCategory == null )
                 {
                     var categories = _architectCategoryTabFieldInfo
-                           .GetValue( MainButtonDefOf.Architect.TabWindow ) 
+                           .GetValue( MainButtonDefOf.Architect.TabWindow )
                         as List<ArchitectCategoryTab>;
                     _designatorsByCategory = DefDatabase<DesignationCategoryDef>.AllDefsListForReading.SelectMany(
                         catDef =>
@@ -103,12 +107,14 @@ namespace CommandPalette
             }
         }
 
-        public static HistoryList<Designator> RecentlyUsed = new HistoryList<Designator>( 10 );
+        private static HistoryList<Designator> _recentlyUsed = new HistoryList<Designator>( 10 );
+        public static  IEnumerable<Designator> VisibleRecentlyUsed => _recentlyUsed.Where( d => d.Visible );
 
         public static float Similarity( Designator des )
         {
             var name = Similarity( des.Label, query );
-            if ( des.Label.ToUpperInvariant().Contains( query.ToUpperInvariant() ) ) name *= 3f; // give exact (partial) name matches a much higher weight
+            if ( des.Label.ToUpperInvariant().Contains( query.ToUpperInvariant() ) )
+                name *= 3f; // give exact (partial) name matches a much higher weight
             var desc = Similarity( des.Desc, query );
             return Mathf.Max( name, desc );
         }
@@ -117,7 +123,7 @@ namespace CommandPalette
         {
             if ( a.NullOrEmpty() || b.NullOrEmpty() )
                 return 0;
-            var C = Math.Max( a.Length, b.Length );
+            var C        = Math.Max( a.Length, b.Length );
             var distance = Levenshtein.CalculateDistance( a, b, 1 );
             return 1 - distance / (float) C;
         }
@@ -130,8 +136,9 @@ namespace CommandPalette
                  Event.current.button      == 1 && !WorldRendererUtility.WorldRenderedNow )
             {
                 Event.current.Use();
-                position = Utilities.MousePositionOnUIScaledBeforeScaling - new Vector2( GIZMO_SIZE / 2f, SEARCH_HEIGHT );
-                active = true;
+                position = Utilities.MousePositionOnUIScaledBeforeScaling -
+                           new Vector2( GIZMO_SIZE / 2f, SEARCH_HEIGHT );
+                active   = true;
                 setFocus = true;
             }
         }
@@ -151,9 +158,9 @@ namespace CommandPalette
                     Cancel();
                     return;
                 }
-                
+
                 GUI.color = new Color( 1f, 1f, 1f, 1 - fade );
-                var searchCanvas = new Rect( canvas.xMin, canvas.yMin, WIDTH, SEARCH_HEIGHT );
+                var searchCanvas  = new Rect( canvas.xMin, canvas.yMin, WIDTH, SEARCH_HEIGHT );
                 var paletteCanvas = new Rect( canvas.xMin, searchCanvas.yMax + MARGIN, WIDTH, PALETTE_HEIGHT );
                 DoSearch( searchCanvas );
                 DoPalette( paletteCanvas, fade );
@@ -164,9 +171,9 @@ namespace CommandPalette
 
         public void Cancel()
         {
-            active = false;
-            position = Vector2.zero;
-            query = "";
+            active    = false;
+            position  = Vector2.zero;
+            query     = "";
             GUI.color = Color.white;
         }
 
@@ -193,14 +200,14 @@ namespace CommandPalette
 
         public void DoPalette( Rect canvas, float fade )
         {
-            var pos = canvas.min;
-            var fadeColor = new Color( 1f, 1f, 1f, 1 - fade );
-            var designators = query.NullOrEmpty() ? RecentlyUsed : FilteredDesignators;
+            var pos         = canvas.min;
+            var fadeColor   = new Color( 1f, 1f, 1f, 1 - fade );
+            var designators = query.NullOrEmpty() ? VisibleRecentlyUsed : FilteredDesignators;
             foreach ( var designator in designators )
             {
                 if ( pos.x + GIZMO_SIZE > canvas.xMax )
                 {
-                    pos.x = canvas.xMin;
+                    pos.x =  canvas.xMin;
                     pos.y += GIZMO_SIZE + MARGIN;
                 }
 
@@ -209,10 +216,10 @@ namespace CommandPalette
 
                 var iconColor = designator.defaultIconColor;
                 designator.defaultIconColor = fadeColor;
-                GUI.color = fadeColor;
+                GUI.color                   = fadeColor;
                 var result = designator.GizmoOnGUI( pos, GIZMO_SIZE );
-                designator.defaultIconColor = iconColor;
-                pos.x += GIZMO_SIZE + MARGIN;
+                designator.defaultIconColor =  iconColor;
+                pos.x                       += GIZMO_SIZE + MARGIN;
                 switch ( result.State )
                 {
                     case GizmoState.Interacted:
@@ -229,10 +236,11 @@ namespace CommandPalette
         public void Select( Designator designator, GizmoResult result )
         {
             Find.MainTabsRoot.SetCurrentTab( MainButtonDefOf.Architect, false );
-            if ( MainButtonDefOf.Architect.TabWindow is MainTabWindow_Architect architectTab
+            if ( CommandPalette.Settings.OpenArchitect
+              && MainButtonDefOf.Architect.TabWindow is MainTabWindow_Architect architectTab
               && DesignatorsByCategory.TryGetValue( designator, out ArchitectCategoryTab tab ) )
                 architectTab.selectedDesPanel = tab;
-            RecentlyUsed.Add( designator );
+            _recentlyUsed.Add( designator );
             designator.ProcessInput( result.InteractEvent );
         }
     }

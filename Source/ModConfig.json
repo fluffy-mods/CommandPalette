@@ -3,22 +3,14 @@
     "version": {
         "major": 1,
         "minor": 2,
-        "build": 48
+        "build": 52
     },
     "git_user": "fluffy-mods",
     "git_repo": "CommandPalette",
     "visibility": 0,
     "packageId": "fluffy.commandpalette",
-    "changenote": "2020-04-25 :: Fluffy :: update desciption, fix nullref in equality comparer",
-    "changenotes": [
-        {
-            "repo": "CommandPalette",
-            "hash": "a345bfd96f59f765d57de86154f0ee2d8c02e0b2",
-            "date": "2020-04-25",
-            "author": "Fluffy",
-            "message": "update desciption, fix nullref in equality comparer"
-        }
-    ],
+    "changenote": "",
+    "changenotes": [],
     "contributors": {},
     "tags": [
         "1.1"

@@ -1,13 +1,11 @@
-{ 
-    "depends": [
-        {
-            "id": "brrainz.harmony",
-            "name": "Harmony",
-            "steam": 2009463077,
-            "url": "https://github.com/pardeike/HarmonyRimWorld/releases/latest"
-        }
-    ],
-    "after": [
-        "brrainz.harmony"
-    ]
+{
+  "depends": [
+    {
+      "id": "brrainz.harmony",
+      "name": "Harmony",
+      "steam": 2009463077,
+      "url": "https://github.com/pardeike/HarmonyRimWorld/releases/latest"
+    }
+  ],
+  "after": ["brrainz.harmony", "ludeon.rimworld", "ludeon.rimworld.royalty"]
 }
