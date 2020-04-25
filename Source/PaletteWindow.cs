@@ -235,11 +235,13 @@ namespace CommandPalette
 
         public void Select( Designator designator, GizmoResult result )
         {
-            Find.MainTabsRoot.SetCurrentTab( MainButtonDefOf.Architect, false );
             if ( CommandPalette.Settings.OpenArchitect
               && MainButtonDefOf.Architect.TabWindow is MainTabWindow_Architect architectTab
               && DesignatorsByCategory.TryGetValue( designator, out ArchitectCategoryTab tab ) )
+            {
+                Find.MainTabsRoot.SetCurrentTab( MainButtonDefOf.Architect, false );
                 architectTab.selectedDesPanel = tab;
+            }
             _recentlyUsed.Add( designator );
             designator.ProcessInput( result.InteractEvent );
         }

@@ -2,15 +2,23 @@
     "name": "Command Palette",
     "version": {
         "major": 1,
-        "minor": 2,
-        "build": 52
+        "minor": 3,
+        "build": 54
     },
     "git_user": "fluffy-mods",
     "git_repo": "CommandPalette",
     "visibility": 0,
     "packageId": "fluffy.commandpalette",
-    "changenote": "",
-    "changenotes": [],
+    "changenote": "2020-04-25 :: Fluffy :: add toggle for opening architect, hide disallowed commands from recent list, set default scale to 100%",
+    "changenotes": [
+        {
+            "repo": "CommandPalette",
+            "hash": "85d97dca3fa238941fa19aff49f73172aa5fe0e4",
+            "date": "2020-04-25",
+            "author": "Fluffy",
+            "message": "add toggle for opening architect, hide disallowed commands from recent list, set default scale to 100%"
+        }
+    ],
     "contributors": {},
     "tags": [
         "1.1"
