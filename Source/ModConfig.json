@@ -1,9 +1,9 @@
 {
     "name": "Command Palette",
     "version": {
-        "major": 0,
+        "major": 1,
         "minor": 0,
-        "build": 44
+        "build": 45
     },
     "git_user": "fluffy-mods",
     "git_repo": "CommandPalette",
