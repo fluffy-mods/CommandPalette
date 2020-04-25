@@ -115,6 +115,8 @@ namespace CommandPalette
 
         public static float Similarity( string a, string b )
         {
+            if ( a.NullOrEmpty() || b.NullOrEmpty() )
+                return 0;
             var C = Math.Max( a.Length, b.Length );
             var distance = Levenshtein.CalculateDistance( a, b, 1 );
             return 1 - distance / (float) C;
