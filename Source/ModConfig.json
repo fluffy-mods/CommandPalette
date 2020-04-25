@@ -3,7 +3,7 @@
     "version": {
         "major": 0,
         "minor": 0,
-        "build": 1
+        "build": 44
     },
     "git_user": "fluffy-mods",
     "git_repo": "CommandPalette",
@@ -12,5 +12,7 @@
     "changenote": "",
     "changenotes": [],
     "contributors": {},
-    "tags": []
+    "tags": [
+        "1.1"
+    ]
 }
