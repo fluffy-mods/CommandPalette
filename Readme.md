@@ -2,11 +2,21 @@
 
 all your commands in one place
 
-# Important
-
 # Features
 
+Ever been annoyed about the ever increasing number of architect categories? Can't find anything in the 'Furniture', 'More Furniture', 'Furniture Plus' and 'RimKEA Furniture' tabs?
+
+Panic no longer, for Command Palette is here.
+
+![Command Palette in action](https://i.imgur.com/NfyoajE.gif)
+
+Right-click with nothing selected to open the command palette.
+
+Recently used commands will be immediately shown. Type a few letters to show commands whose name or description are similar.
+
 # Known Issues
+
+None
 
 
 # Think you found a bug? 
@@ -30,4 +40,4 @@ Show your appreciation by buying me a coffee (or contribute towards a nice singl
 [![I Have a Black Dog](https://i.ibb.co/ss59Rwy/New-Project-2.png)](https://www.youtube.com/watch?v=XiCrniLQGYc)
 
 # Version
-This is version 1.1.46, for RimWorld 1.1.2610.
+This is version 1.1.47, for RimWorld 1.1.2610.

@@ -16,7 +16,11 @@ namespace CommandPalette
 
         public int GetHashCode( Designator obj )
         {
-            return obj.Label.GetHashCode() * obj.icon.GetHashCode();
-        }
+            if (!obj.Label.NullOrEmpty() && obj.icon != null )
+                return obj.Label.GetHashCode() * obj.icon.GetHashCode();
+            if ( !obj.Label.NullOrEmpty() )
+                return obj.Label.GetHashCode();
+            return obj.icon != null ? obj.icon.GetHashCode() : 0;
+        } 
     }
 }

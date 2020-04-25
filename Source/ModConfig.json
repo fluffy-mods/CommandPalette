@@ -3,22 +3,14 @@
     "version": {
         "major": 1,
         "minor": 1,
-        "build": 46
+        "build": 47
     },
     "git_user": "fluffy-mods",
     "git_repo": "CommandPalette",
     "visibility": 0,
     "packageId": "fluffy.commandpalette",
-    "changenote": "2020-04-25 :: Fluffy :: add null check for similarity",
-    "changenotes": [
-        {
-            "repo": "CommandPalette",
-            "hash": "50e801bbd5fbde00428481e52ec07e199e93fb28",
-            "date": "2020-04-25",
-            "author": "Fluffy",
-            "message": "add null check for similarity"
-        }
-    ],
+    "changenote": "",
+    "changenotes": [],
     "contributors": {},
     "tags": [
         "1.1"
