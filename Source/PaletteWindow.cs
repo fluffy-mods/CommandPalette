@@ -130,16 +130,23 @@ namespace CommandPalette
 
         public void HandleShortcuts()
         {
-            // this is injected to run right before the vanilla LowPriorityShortcuts.
-            // if nothing selected and right clicked on colony view.
-            if ( Find.Selector.NumSelected == 0 && Event.current.type == EventType.MouseDown &&
-                 Event.current.button      == 1 && !WorldRendererUtility.WorldRenderedNow )
+            try
             {
-                Event.current.Use();
-                position = Utilities.MousePositionOnUIScaledBeforeScaling -
-                           new Vector2( GIZMO_SIZE / 2f, SEARCH_HEIGHT );
-                active   = true;
-                setFocus = true;
+                // this is injected to run right before the vanilla LowPriorityShortcuts.
+                // if nothing selected and right clicked on colony view.
+                if ( Find.Selector.NumSelected == 0 && !WorldRendererUtility.WorldRenderedNow
+                                                    && ( CommandPalette.Settings.KeyBinding?.JustPressed ?? false ) )
+                {
+                    Event.current.Use();
+                    position = Utilities.MousePositionOnUIScaledBeforeScaling -
+                               new Vector2( GIZMO_SIZE / 2f, SEARCH_HEIGHT );
+                    active   = true;
+                    setFocus = true;
+                }
+            }
+            catch ( Exception err )
+            {
+                Verse.Log.Error( err.ToString() );
             }
         }
 
