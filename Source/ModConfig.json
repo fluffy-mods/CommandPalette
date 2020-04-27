@@ -2,15 +2,22 @@
     "name": "Command Palette",
     "version": {
         "major": 1,
-        "minor": 3,
-        "build": 74
+        "minor": 4,
+        "build": 77
     },
     "git_user": "fluffy-mods",
     "git_repo": "CommandPalette",
     "visibility": 0,
     "packageId": "fluffy.commandpalette",
-    "changenote": "2020-04-27 :: Fluffy :: add configurable keybinding",
+    "changenote": "2020-04-27 :: Fluffy :: remove focus from search when selection is made\n2020-04-27 :: Fluffy :: add configurable keybinding",
     "changenotes": [
+        {
+            "repo": "CommandPalette",
+            "hash": "3e465cdef46f0128b36510f7b6ac03b497c48465",
+            "date": "2020-04-27",
+            "author": "Fluffy",
+            "message": "remove focus from search when selection is made"
+        },
         {
             "repo": "CommandPalette",
             "hash": "635f240260700f7b249ab2c8dfb2ca4cd2c21268",
