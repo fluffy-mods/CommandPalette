@@ -232,6 +232,7 @@ namespace CommandPalette
                     case GizmoState.Interacted:
                     case GizmoState.OpenedFloatMenu when designator.RightClickFloatMenuOptions.FirstOrDefault() == null:
                         Select( designator, result );
+                        GUI.FocusControl("Nowhere");
                         return;
                     case GizmoState.OpenedFloatMenu when designator.RightClickFloatMenuOptions.FirstOrDefault() != null:
                         Find.WindowStack.Add( new FloatMenu( designator.RightClickFloatMenuOptions.ToList() ) );

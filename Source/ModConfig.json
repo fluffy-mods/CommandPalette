@@ -3,14 +3,22 @@
     "version": {
         "major": 1,
         "minor": 3,
-        "build": 72
+        "build": 74
     },
     "git_user": "fluffy-mods",
     "git_repo": "CommandPalette",
     "visibility": 0,
     "packageId": "fluffy.commandpalette",
-    "changenote": "",
-    "changenotes": [],
+    "changenote": "2020-04-27 :: Fluffy :: add configurable keybinding",
+    "changenotes": [
+        {
+            "repo": "CommandPalette",
+            "hash": "635f240260700f7b249ab2c8dfb2ca4cd2c21268",
+            "date": "2020-04-27",
+            "author": "Fluffy",
+            "message": "add configurable keybinding"
+        }
+    ],
     "contributors": {},
     "tags": [
         "1.1"
