@@ -47,6 +47,8 @@ namespace CommandPalette
 
             Scribe_Values.Look( ref PaletteScale, "paletteScale", 1f  );
 			Scribe_Values.Look( ref OpenArchitect, "openArchitect", true  );
+            Scribe_Values.Look( ref NumCols, "numCols", 4 );
+            Scribe_Values.Look( ref NumRows, "numRows", 2 );
             Scribe_Deep.Look( ref _keyBinding, "keybinding" );
         }
 	}
