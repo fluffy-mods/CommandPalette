@@ -40,11 +40,16 @@ namespace CommandPalette
             }
         }
 
-        private const int WIDTH          = GIZMO_SIZE * 4 + MARGIN * 3;
+        private int Width =>
+            (int) ( ( GIZMO_SIZE * CommandPalette.Settings.NumCols +
+                      MARGIN     * ( CommandPalette.Settings.NumCols - 1 ) ) * CommandPalette.Settings.PaletteScale );
+
+        private int PaletteHeight =>
+            (int) ( ( GIZMO_SIZE * CommandPalette.Settings.NumRows +
+                      MARGIN     * ( CommandPalette.Settings.NumRows - 1 ) ) * CommandPalette.Settings.PaletteScale );
         private const int MARGIN         = 6;
         private const int SEARCH_HEIGHT  = 50;
         private const int GIZMO_SIZE     = 75;
-        private const int PALETTE_HEIGHT = GIZMO_SIZE * 2 + MARGIN;
 
         private const int FADE_OUT_START_DISTANCE  = 10;
         private const int FADE_OUT_FINISH_DISTANCE = 200;
@@ -138,7 +143,7 @@ namespace CommandPalette
                                                     && ( CommandPalette.Settings.KeyBinding?.JustPressed ?? false ) )
                 {
                     Event.current.Use();
-                    position = Utilities.MousePositionOnUIScaledBeforeScaling -
+                    position = UI.MousePositionOnUIInverted -
                                new Vector2( GIZMO_SIZE / 2f, SEARCH_HEIGHT );
                     active   = true;
                     setFocus = true;
@@ -154,12 +159,11 @@ namespace CommandPalette
         {
             if ( active )
             {
-                Utilities.ApplyUIScale( Prefs.UIScale * CommandPalette.Settings.PaletteScale );
 
-                var canvas = new Rect( position, new Vector2( WIDTH, SEARCH_HEIGHT + MARGIN + PALETTE_HEIGHT ) )
+                var canvas = new Rect( position, new Vector2( Width, SEARCH_HEIGHT + MARGIN + PaletteHeight ) )
                    .Bounded( new Vector2( UI.screenWidth, UI.screenHeight ) );
 
-                var fade = GetFadeOut( Utilities.MousePositionOnUIScaled, canvas );
+                var fade = GetFadeOut( UI.MousePositionOnUIInverted, canvas );
                 if ( fade > .95f || KeyBindingDefOf.Cancel.KeyDownEvent )
                 {
                     Cancel();
@@ -167,11 +171,13 @@ namespace CommandPalette
                 }
 
                 GUI.color = new Color( 1f, 1f, 1f, 1 - fade );
-                var searchCanvas  = new Rect( canvas.xMin, canvas.yMin, WIDTH, SEARCH_HEIGHT );
-                var paletteCanvas = new Rect( canvas.xMin, searchCanvas.yMax + MARGIN, WIDTH, PALETTE_HEIGHT );
+                var searchCanvas  = new Rect( canvas.xMin, canvas.yMin, Width, SEARCH_HEIGHT );
+                var paletteCanvas = new Rect( canvas.xMin, searchCanvas.yMax + MARGIN, Width, PaletteHeight );
+                paletteCanvas.position /= CommandPalette.Settings.PaletteScale;
+                paletteCanvas.size /= CommandPalette.Settings.PaletteScale;
                 DoSearch( searchCanvas );
+                Utilities.ApplyUIScale( Prefs.UIScale * CommandPalette.Settings.PaletteScale );
                 DoPalette( paletteCanvas, fade );
-
                 Utilities.ApplyUIScale( Prefs.UIScale );
             }
         }
@@ -212,13 +218,14 @@ namespace CommandPalette
             var designators = query.NullOrEmpty() ? VisibleRecentlyUsed : FilteredDesignators;
             foreach ( var designator in designators )
             {
-                if ( pos.x + GIZMO_SIZE > canvas.xMax )
+                // add 10 px of wiggle room for rounding errors
+                if ( pos.x + GIZMO_SIZE > canvas.xMax + 10 )
                 {
                     pos.x =  canvas.xMin;
                     pos.y += GIZMO_SIZE + MARGIN;
                 }
 
-                if ( pos.y + GIZMO_SIZE > canvas.yMax )
+                if ( pos.y + GIZMO_SIZE > canvas.yMax + 10 )
                     break;
 
                 var iconColor = designator.defaultIconColor;

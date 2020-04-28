@@ -3,14 +3,22 @@
     "version": {
         "major": 1,
         "minor": 4,
-        "build": 78
+        "build": 97
     },
     "git_user": "fluffy-mods",
     "git_repo": "CommandPalette",
     "visibility": 0,
     "packageId": "fluffy.commandpalette",
-    "changenote": "",
-    "changenotes": [],
+    "changenote": "2020-04-28 10:04 :: Fluffy :: deps: update BetterKeybinding dependency",
+    "changenotes": [
+        {
+            "repo": "CommandPalette",
+            "hash": "7bb2fc74ee54f6b24563a4961bb4dde1155dd96f",
+            "date": "2020-04-28 10:04",
+            "author": "Fluffy",
+            "message": "deps: update BetterKeybinding dependency"
+        }
+    ],
     "contributors": {},
     "tags": [
         "1.1"
