@@ -9,21 +9,14 @@
     "git_repo": "CommandPalette",
     "visibility": 0,
     "packageId": "fluffy.commandpalette",
-    "changenote": "2020-04-29 00:04 :: Fluffy :: make number of rows/columns configurable\n2020-04-28 10:04 :: Fluffy :: deps: update BetterKeybinding dependency",
+    "changenote": "2020-05-04 20:05 :: Fluffy :: update preview",
     "changenotes": [
         {
             "repo": "CommandPalette",
-            "hash": "a5c7e00478ee22a3011400877d064b18e584e783",
-            "date": "2020-04-29 00:04",
+            "hash": "7881ba0e122161a81416e6d10a8cd1aa4e8e3b4e",
+            "date": "2020-05-04 20:05",
             "author": "Fluffy",
-            "message": "make number of rows/columns configurable"
-        },
-        {
-            "repo": "CommandPalette",
-            "hash": "7bb2fc74ee54f6b24563a4961bb4dde1155dd96f",
-            "date": "2020-04-28 10:04",
-            "author": "Fluffy",
-            "message": "deps: update BetterKeybinding dependency"
+            "message": "update preview"
         }
     ],
     "contributors": {},
