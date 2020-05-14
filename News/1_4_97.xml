@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Defs>
+  <HugsLib.UpdateFeatureDef>
+    <modNameReadable>Command Palette</modNameReadable>
+    <modIdentifier>fluffy.commandpalette</modIdentifier>
+    <defName>Command_Palette_1_4_97</defName>
+    <assemblyVersion>1.4.97</assemblyVersion>
+    <content>
+      |img:too-many-buttons|caption:The number of rows and columns of commands is now configurable.
+      |Want a 10x10 grid of tiny commands? Now you can! (but you don't have to.)
+      ||img:settings
+      |The mod settings page now has fields for the number of commands per row and column, in addition to the scale setting it already had.
+      |I've also added a keybinding setting that allows you to bind the palette to any key or mousebutton, and can include modifiers.
+      |Want to bind the palette to Ctrl + LeftClick? Now you can! Want to use Alt + F4 as you hotkey? Give it a try! (I take no responsibility for lost save games. Please don't try Alt + F4.)
+    </content>
+  </HugsLib.UpdateFeatureDef>
+</Defs>

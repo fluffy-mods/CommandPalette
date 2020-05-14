@@ -90,11 +90,10 @@ namespace CommandPalette
                                 c => c.def == catDef );
                             return catDef
                                   .ResolvedAllowedDesignators
-                                  .Select(
-                                       des => (
-                                           cat, des ) );
-                        } ).ToDictionary(
-                        k => k.des, v => v.cat );
+                                  .Where( des => des != null )
+                                  .Distinct()
+                                  .Select( des => ( cat, des ) );
+                        } ).ToDictionary( k => k.des, v => v.cat );
                 }
 
                 return _designatorsByCategory;
