@@ -2,15 +2,23 @@
     "name": "Command Palette",
     "version": {
         "major": 1,
-        "minor": 6,
-        "build": 103
+        "minor": 7,
+        "build": 104
     },
     "git_user": "fluffy-mods",
     "git_repo": "CommandPalette",
     "visibility": 0,
     "packageId": "fluffy.commandpalette",
-    "changenote": "",
-    "changenotes": [],
+    "changenote": "2020-05-15 22:05 :: Fluffy :: another attempt at fixing duped key errors in designator by category caching",
+    "changenotes": [
+        {
+            "repo": "CommandPalette",
+            "hash": "bf8168b887e493bc2ec263a2025a22f4e7d4b0dc",
+            "date": "2020-05-15 22:05",
+            "author": "Fluffy",
+            "message": "another attempt at fixing duped key errors in designator by category caching"
+        }
+    ],
     "contributors": {},
     "attributions": {
         "icons in preview image": {
