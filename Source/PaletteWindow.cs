@@ -11,7 +11,6 @@ using RimWorld;
 using RimWorld.Planet;
 using UnityEngine;
 using Verse;
-using Verse.Noise;
 
 namespace CommandPalette
 {
@@ -80,20 +79,13 @@ namespace CommandPalette
             {
                 if ( _designatorsByCategory == null )
                 {
-                    var categories = _architectCategoryTabFieldInfo
-                           .GetValue( MainButtonDefOf.Architect.TabWindow )
+                    var categories = _architectCategoryTabFieldInfo.GetValue( MainButtonDefOf.Architect.TabWindow )
                         as List<ArchitectCategoryTab>;
-                    _designatorsByCategory = DefDatabase<DesignationCategoryDef>.AllDefsListForReading.SelectMany(
-                        catDef =>
-                        {
-                            var cat = categories.Find(
-                                c => c.def == catDef );
-                            return catDef
-                                  .ResolvedAllowedDesignators
-                                  .Where( des => des != null )
-                                  .Distinct()
-                                  .Select( des => ( cat, des ) );
-                        } ).ToDictionary( k => k.des, v => v.cat );
+                    _designatorsByCategory = new Dictionary<Designator, ArchitectCategoryTab>();
+                    foreach ( var category in categories )
+                        foreach ( var designator in category.def.ResolvedAllowedDesignators )
+                            if(!_designatorsByCategory.ContainsKey(designator))
+                                _designatorsByCategory.Add( designator, category );
                 }
 
                 return _designatorsByCategory;
