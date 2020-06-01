@@ -9,16 +9,8 @@
     "git_repo": "CommandPalette",
     "visibility": 0,
     "packageId": "fluffy.commandpalette",
-    "changenote": "2020-05-15 22:05 :: Fluffy :: another attempt at fixing duped key errors in designator by category caching",
-    "changenotes": [
-        {
-            "repo": "CommandPalette",
-            "hash": "bf8168b887e493bc2ec263a2025a22f4e7d4b0dc",
-            "date": "2020-05-15 22:05",
-            "author": "Fluffy",
-            "message": "another attempt at fixing duped key errors in designator by category caching"
-        }
-    ],
+    "changenote": "",
+    "changenotes": [],
     "contributors": {},
     "attributions": {
         "icons in preview image": {
