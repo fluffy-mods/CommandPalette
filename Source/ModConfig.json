@@ -10,7 +10,15 @@
     "visibility": 0,
     "packageId": "fluffy.commandpalette",
     "changenote": "",
-    "changenotes": [],
+    "changenotes": [
+        {
+            "repo": "CommandPalette",
+            "hash": "d0d06dff4fd0e56d573b0089729696b06faf111d",
+            "date": "2020-06-02 00:06",
+            "author": "Fluffy",
+            "message": "Release 1.7.104 [nolog]"
+        }
+    ],
     "contributors": {},
     "attributions": {
         "icons in preview image": {
