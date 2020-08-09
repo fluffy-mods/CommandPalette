@@ -2,9 +2,7 @@
 
 all your commands in one place
 
-![Features](https://banners.karel-kroeze.nl/title/Features.png)
-
-Ever been annoyed about the ever increasing number of architect categories? Can't find anything in the 'Furniture', 'More Furniture', 'Furniture Plus' and 'RimKEA Furniture' tabs?
+![Features](https://banners.karel-kroeze.nl/title/Features.png)Ever been annoyed about the ever increasing number of architect categories? Can't find anything in the 'Furniture', 'More Furniture', 'Furniture Plus' and 'RimKEA Furniture' tabs?
 
 Panic no longer, for Command Palette is here.
 
