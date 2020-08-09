@@ -138,10 +138,14 @@ namespace CommandPalette
                      && ( CommandPalette.Settings.KeyBinding?.JustPressed ?? false ) )
                 {
                     Event.current.Use();  
-                    position = UI.MousePositionOnUIInverted -
-                               new Vector2( GIZMO_SIZE / 2f, SEARCH_HEIGHT );
-                    active   = true;
-                    setFocus = true;
+
+                    if (active)
+                        Cancel();
+                    else {
+                        position = UI.MousePositionOnUIInverted - new Vector2( GIZMO_SIZE / 2f, SEARCH_HEIGHT );
+                        active   = true;
+                        setFocus = true;
+                    }
                 }
             }
             catch ( Exception err )
