@@ -9,6 +9,7 @@ namespace CommandPalette
         public float PaletteScale = 1f;
         public int MaxRecentDesignators = 10;
         public bool OpenArchitect = true;
+        public bool OpenWithSelection = false;
         public int NumRows = 2;
         public int NumCols = 4;
         private KeyBind _keyBinding;
@@ -43,6 +44,7 @@ namespace CommandPalette
             Widgets.TextFieldNumeric( rect.RightPart( 1 / 3f ), ref NumRows, ref _numRows, 1, 10 );
             
             KeyBinding.Draw( options.GetRect( 30 ) );
+            options.CheckboxLabeled("Allow opening when something is selected", ref OpenWithSelection, "By default, the command palette will not open when something is selected. This makes sure that it doesn't conflict with right click menus. Enabling this options overrides that behaviour. \n\nWARNING:\nOnly enable this when you have set a different hotkey!");
 
             rect = options.GetRect(30);
             Widgets.Label(rect.LeftPart(2 / 3f), "Maximum number of recently used designators shown");
@@ -60,6 +62,7 @@ namespace CommandPalette
             Scribe_Values.Look( ref NumCols, "numCols", 4 );
             Scribe_Values.Look( ref NumRows, "numRows", 2 );
             Scribe_Values.Look(ref MaxRecentDesignators, "maxRecentDesignators", 10);
+            Scribe_Values.Look(ref OpenWithSelection, "openWithSelection" );
             Scribe_Deep.Look( ref _keyBinding, "keybinding" );
         }
 	}

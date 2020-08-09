@@ -133,10 +133,11 @@ namespace CommandPalette
             {
                 // this is injected to run right before the vanilla LowPriorityShortcuts.
                 // if nothing selected and right clicked on colony view.
-                if ( Find.Selector.NumSelected == 0 && !WorldRendererUtility.WorldRenderedNow
-                                                    && ( CommandPalette.Settings.KeyBinding?.JustPressed ?? false ) )
+                if ( ( CommandPalette.Settings.OpenWithSelection || Find.Selector.NumSelected == 0 )
+                     && !WorldRendererUtility.WorldRenderedNow
+                     && ( CommandPalette.Settings.KeyBinding?.JustPressed ?? false ) )
                 {
-                    Event.current.Use();
+                    Event.current.Use();  
                     position = UI.MousePositionOnUIInverted -
                                new Vector2( GIZMO_SIZE / 2f, SEARCH_HEIGHT );
                     active   = true;
