@@ -9,51 +9,8 @@
     "git_repo": "CommandPalette",
     "visibility": 0,
     "packageId": "fluffy.commandpalette",
-    "changenote": "2020-08-09 12:08 :: Fluffy :: update for 1.2\n2020-08-09 12:08 :: Fluffy :: close palette when keybinding is pressed while open\n2020-08-09 12:08 :: Fluffy :: allow opening with selection with setting. closes #6\n2020-08-09 12:08 :: Fluffy :: allow changing amount of recent widgets displayed",
-    "changenotes": [
-        {
-            "repo": "CommandPalette",
-            "hash": "ff3dc3b89dc76dbee2312ca8f6e86959bd0f8442",
-            "date": "2020-08-09 12:08",
-            "author": "Fluffy",
-            "message": "update for 1.2"
-        },
-        {
-            "repo": "CommandPalette",
-            "hash": "a7cac6bb4ebf70cb897f4c5f4797efe6e3c172f1",
-            "date": "2020-08-09 12:08",
-            "author": "Fluffy",
-            "message": "close palette when keybinding is pressed while open"
-        },
-        {
-            "repo": "CommandPalette",
-            "hash": "62304d30a20272da676ceab33a480cfacc02097c",
-            "date": "2020-08-09 12:08",
-            "author": "Fluffy",
-            "message": "allow opening with selection with setting. closes #6"
-        },
-        {
-            "repo": "CommandPalette",
-            "hash": "ef4e7818ddb30074b709a005c281396cf6c8a804",
-            "date": "2020-08-09 12:08",
-            "author": "Fluffy",
-            "message": "allow changing amount of recent widgets displayed"
-        },
-        {
-            "repo": "CommandPalette",
-            "hash": "dd2ccd369eb50778900e7d1698c776ef26aeb6ad",
-            "date": "2020-06-09 22:06",
-            "author": "Fluffy",
-            "message": "Release 1.7.104 [nolog]"
-        },
-        {
-            "repo": "CommandPalette",
-            "hash": "d0d06dff4fd0e56d573b0089729696b06faf111d",
-            "date": "2020-06-02 00:06",
-            "author": "Fluffy",
-            "message": "Release 1.7.104 [nolog]"
-        }
-    ],
+    "changenote": "",
+    "changenotes": [],
     "contributors": {},
     "attributions": {
         "icons in preview image": {
