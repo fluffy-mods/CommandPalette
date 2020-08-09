@@ -10,7 +10,15 @@
     "visibility": 0,
     "packageId": "fluffy.commandpalette",
     "changenote": "",
-    "changenotes": [],
+    "changenotes": [
+        {
+            "repo": "CommandPalette",
+            "hash": "c3cce354947822db629a04b71234820e23ac463b",
+            "date": "2020-08-09 13:08",
+            "author": "Fluffy",
+            "message": "Release 1.8.108 [nolog]"
+        }
+    ],
     "contributors": {},
     "attributions": {
         "icons in preview image": {
