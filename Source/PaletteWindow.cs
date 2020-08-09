@@ -142,9 +142,9 @@ namespace CommandPalette
                     if (active)
                         Cancel();
                     else {
-                        position = UI.MousePositionOnUIInverted - new Vector2( GIZMO_SIZE / 2f, SEARCH_HEIGHT );
                         active   = true;
                         setFocus = true;
+                        position = UI.MousePositionOnUIInverted - new Vector2( GIZMO_SIZE / 2f, SEARCH_HEIGHT );
                     }
                 }
             }

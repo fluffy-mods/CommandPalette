@@ -1,4 +1,4 @@
-[![RimWorld 1.1](https://img.shields.io/badge/RimWorld-1.1-brightgreen.svg)](http://rimworldgame.com/)
+[![RimWorld 1.2](https://img.shields.io/badge/RimWorld-1.2-brightgreen.svg)](http://rimworldgame.com/)
 
 all your commands in one place
 
@@ -68,4 +68,4 @@ Become a supporter and show your appreciation by buying me a coffee (or contribu
   
   
 ![Version](https://banners.karel-kroeze.nl/title/Version.png)
-This is version 1.7.104, for RimWorld 1.1.2654.
+This is version 1.7.107, for RimWorld 1.2.2719.

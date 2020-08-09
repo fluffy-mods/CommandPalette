@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Defs>
+  <HugsLib.UpdateFeatureDef>
+    <modNameReadable>Command Palette</modNameReadable>
+    <modIdentifier>fluffy.commandpalette</modIdentifier>
+    <defName>Command_Palette_1_7_104</defName>
+    <assemblyVersion>1.7.104</assemblyVersion>
+    <content>You can now alter the maximum number of recent designators in the mod settings.
+      | There is now a setting to allow opening the palette when something is already selected. This may be useful if you've changed the keybinding to something other than the right mouse button.
+      | Pressing (or clicking) the keybinding to open the palette while it is open now closes the palette instead. 
+</content>
+  </HugsLib.UpdateFeatureDef>
+</Defs>

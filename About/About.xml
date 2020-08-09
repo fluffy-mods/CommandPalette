@@ -3,7 +3,7 @@
   <name>Command Palette</name>
   <author>Fluffy</author>
   <supportedVersions>
-    <li>1.1</li>
+    <li>1.2</li>
   </supportedVersions>
   <description>all your commands in one place
 
@@ -22,7 +22,7 @@ Recently used commands will be immediately shown. Type a few letters to show com
 None
 
 &lt;size=24&gt;Version&lt;/size&gt;
-This is version 1.7.104, for RimWorld 1.1.2654.
+This is version 1.7.107, for RimWorld 1.2.2719.
 
 </description>
   <url>https://ludeon.com/forums/index.php?topic=16120</url>
