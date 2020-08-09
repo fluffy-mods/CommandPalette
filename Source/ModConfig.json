@@ -2,15 +2,22 @@
     "name": "Command Palette",
     "version": {
         "major": 1,
-        "minor": 7,
-        "build": 107
+        "minor": 8,
+        "build": 108
     },
     "git_user": "fluffy-mods",
     "git_repo": "CommandPalette",
     "visibility": 0,
     "packageId": "fluffy.commandpalette",
-    "changenote": "2020-08-09 12:08 :: Fluffy :: close palette when keybinding is pressed while open\n2020-08-09 12:08 :: Fluffy :: allow opening with selection with setting. closes #6\n2020-08-09 12:08 :: Fluffy :: allow changing amount of recent widgets displayed",
+    "changenote": "2020-08-09 12:08 :: Fluffy :: update for 1.2\n2020-08-09 12:08 :: Fluffy :: close palette when keybinding is pressed while open\n2020-08-09 12:08 :: Fluffy :: allow opening with selection with setting. closes #6\n2020-08-09 12:08 :: Fluffy :: allow changing amount of recent widgets displayed",
     "changenotes": [
+        {
+            "repo": "CommandPalette",
+            "hash": "ff3dc3b89dc76dbee2312ca8f6e86959bd0f8442",
+            "date": "2020-08-09 12:08",
+            "author": "Fluffy",
+            "message": "update for 1.2"
+        },
         {
             "repo": "CommandPalette",
             "hash": "a7cac6bb4ebf70cb897f4c5f4797efe6e3c172f1",
@@ -56,7 +63,8 @@
         }
     },
     "tags": [
-        "1.1"
+        "1.1",
+        "1.2"
     ],
     "publishedfileid": "2073966033"
 }
