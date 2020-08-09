@@ -13,6 +13,13 @@
     "changenotes": [
         {
             "repo": "CommandPalette",
+            "hash": "56da1fa6db98066739012114cc62a450c3edce40",
+            "date": "2020-08-09 16:08",
+            "author": "Fluffy",
+            "message": "Release 1.8.108 [nolog]"
+        },
+        {
+            "repo": "CommandPalette",
             "hash": "53dd620bf76495c7cde3f4ef1935000a304519fd",
             "date": "2020-08-09 16:08",
             "author": "Fluffy",
