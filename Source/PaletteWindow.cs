@@ -102,8 +102,11 @@ namespace CommandPalette
                 return _filteredDesignators.Where( d => d.Visible );
             }
         }
-
-        private static HistoryList<Designator> _recentlyUsed = new HistoryList<Designator>( 10 );
+        
+        public static void Notify_SettingsChanged(){
+            _recentlyUsed.Resize(CommandPalette.Settings.MaxRecentDesignators);
+        }
+        private static HistoryList<Designator> _recentlyUsed = new HistoryList<Designator>( CommandPalette.Settings.MaxRecentDesignators );
         public static  IEnumerable<Designator> VisibleRecentlyUsed => _recentlyUsed.Where( d => d.Visible );
 
         public static float Similarity( Designator des )

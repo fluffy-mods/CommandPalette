@@ -16,6 +16,10 @@ namespace CommandPalette
             this.size = size;
         }
 
+        public void Resize( int size ){
+            this.size = size;
+        }
+
         public void Add( T datum )
         {
             if ( data.Contains( datum ) )

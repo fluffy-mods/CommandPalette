@@ -31,5 +31,9 @@ namespace CommandPalette
             return "Command Palette";
         }
 
+        public override void WriteSettings(){
+            base.WriteSettings();
+            PaletteWindow.Notify_SettingsChanged();
+        }
     }
 }
