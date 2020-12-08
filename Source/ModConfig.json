@@ -3,7 +3,7 @@
     "version": {
         "major": 1,
         "minor": 8,
-        "build": 108
+        "build": 113
     },
     "git_user": "fluffy-mods",
     "git_repo": "CommandPalette",
@@ -11,6 +11,13 @@
     "packageId": "fluffy.commandpalette",
     "changenote": "",
     "changenotes": [
+        {
+            "repo": "CommandPalette",
+            "hash": "ed146eb3082b02ccb559eea08e8d20109eca40a4",
+            "date": "2020-08-09 17:08",
+            "author": "Fluffy",
+            "message": "Release 1.8.108 [nolog]"
+        },
         {
             "repo": "CommandPalette",
             "hash": "af274f7f2640e293f024d432bf2b5afeaa84042f",
