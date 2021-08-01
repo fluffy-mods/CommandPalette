@@ -215,6 +215,7 @@ namespace CommandPalette
             var pos         = canvas.min;
             var fadeColor   = new Color( 1f, 1f, 1f, 1 - fade );
             var designators = query.NullOrEmpty() ? VisibleRecentlyUsed : FilteredDesignators;
+            GizmoRenderParms parms = new GizmoRenderParms();
             foreach ( var designator in designators )
             {
                 // add 10 px of wiggle room for rounding errors
@@ -230,7 +231,7 @@ namespace CommandPalette
                 var iconColor = designator.defaultIconColor;
                 designator.defaultIconColor = fadeColor;
                 GUI.color                   = fadeColor;
-                var result = designator.GizmoOnGUI( pos, GIZMO_SIZE );
+                var result = designator.GizmoOnGUI( pos, GIZMO_SIZE, parms );
                 designator.defaultIconColor =  iconColor;
                 pos.x                       += GIZMO_SIZE + MARGIN;
                 switch ( result.State )
