@@ -1,0 +1,41 @@
+{
+    "name": "Command Palette",
+    "sourceDir": ".",
+    "targetDir": "CommandPalette",
+    "url": "https://github.com/fluffy-mods/CommandPalette",
+    "version": {
+        "major": 2,
+        "minor": 0,
+        "build": 119
+    },
+    "author": {
+        "name": "Fluffy",
+        "url": "https://github.com/fluffy-mods/",
+        "email": "fluffy.l2032@gmail.com"
+    },
+    "git": {
+        "owner": "fluffy-mods",
+        "repo": "CommandPalette",
+        "url": "https://github.com/fluffy-mods/CommandPalette"
+    },
+    "changelog": [],
+    "contributions": [],
+    "contributors": {},
+    "dependencies": [
+        {
+            "type": "required",
+            "id": "brrainz.harmony",
+            "name": "Harmony",
+            "steamId": 2009463077,
+            "download": "https://github.com/pardeike/HarmonyRimWorld/releases/latest"
+        },
+        {
+            "type": "loadAfter",
+            "id": "ludeon.rimworld"
+        },
+        {
+            "type": "loadAfter",
+            "id": "ludeon.rimworld.royalty"
+        }
+    ]
+}

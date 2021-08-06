@@ -1,46 +1,37 @@
-﻿// HistoryList.cs
+// HistoryList.cs
 // Copyright Karel Kroeze, 2020-2020
 
 using System.Collections;
 using System.Collections.Generic;
 
-namespace CommandPalette
-{
-    public class HistoryList<T> : IEnumerable<T>
-    {
+namespace CommandPalette {
+    public class HistoryList<T>: IEnumerable<T> {
         private readonly List<T> data = new List<T>();
         private          int     size;
 
-        public HistoryList(int size)
-        {
+        public HistoryList(int size) {
             this.size = size;
         }
 
-        public IEnumerator<T> GetEnumerator()
-        {
+        public IEnumerator<T> GetEnumerator() {
             return data.GetEnumerator();
         }
 
-        IEnumerator IEnumerable.GetEnumerator()
-        {
+        IEnumerator IEnumerable.GetEnumerator() {
             return GetEnumerator();
         }
 
-        public void Resize(int size)
-        {
+        public void Resize(int size) {
             this.size = size;
         }
 
-        public void Add(T datum)
-        {
-            if (data.Contains(datum))
-            {
+        public void Add(T datum) {
+            if (data.Contains(datum)) {
                 data.Remove(datum);
             }
 
             data.Insert(0, datum);
-            while (data.Count > size)
-            {
+            while (data.Count > size) {
                 data.RemoveAt(size);
             }
         }

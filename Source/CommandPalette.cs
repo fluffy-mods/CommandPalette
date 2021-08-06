@@ -1,15 +1,12 @@
-﻿using Verse;
-using UnityEngine;
 using HarmonyLib;
+using UnityEngine;
+using Verse;
 
-namespace CommandPalette
-{
-    public class CommandPalette : Mod
-    {
+namespace CommandPalette {
+    public class CommandPalette: Mod {
         public static Settings Settings { get; private set; }
 
-        public CommandPalette( ModContentPack content ) : base( content )
-        {
+        public CommandPalette(ModContentPack content) : base(content) {
             // initialize settings
             Settings = GetSettings<Settings>();
 
@@ -20,18 +17,16 @@ namespace CommandPalette
             harmony.PatchAll();
         }
 
-        public override void DoSettingsWindowContents( Rect inRect )
-        {
-            base.DoSettingsWindowContents( inRect );
-            GetSettings<Settings>().DoWindowContents( inRect );
+        public override void DoSettingsWindowContents(Rect inRect) {
+            base.DoSettingsWindowContents(inRect);
+            GetSettings<Settings>().DoWindowContents(inRect);
         }
 
-        public override string SettingsCategory()
-        {
+        public override string SettingsCategory() {
             return "Command Palette";
         }
 
-        public override void WriteSettings(){
+        public override void WriteSettings() {
             base.WriteSettings();
             PaletteWindow.Notify_SettingsChanged();
         }
