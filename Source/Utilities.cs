@@ -7,30 +7,11 @@ using Verse;
 
 namespace CommandPalette {
     public static class Utilities {
-        private static readonly Stack<float> scaleStack = new Stack<float>();
-
         public static void ApplyUIScale(float scale) {
             UI.screenWidth = Mathf.RoundToInt(Screen.width / scale);
             UI.screenHeight = Mathf.RoundToInt(Screen.height / scale);
             GUI.matrix = Matrix4x4.TRS(new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity,
                                         new Vector3(scale, scale, 1f));
-        }
-
-        public static Vector2 MousePositionOnUIScaled {
-            get {
-                Vector2 pos = UI.MousePositionOnUI / CommandPalette.Settings.PaletteScale;
-                pos.y = UI.screenHeight - pos.y;
-                return pos;
-            }
-        }
-
-
-        public static Vector2 MousePositionOnUIScaledBeforeScaling {
-            get {
-                Vector2 pos = UI.MousePositionOnUI / CommandPalette.Settings.PaletteScale;
-                pos.y = (UI.screenHeight / CommandPalette.Settings.PaletteScale) - pos.y;
-                return pos;
-            }
         }
 
         public static Rect Bounded(this Rect rect, Rect other) {

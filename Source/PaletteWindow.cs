@@ -175,9 +175,15 @@ namespace CommandPalette
         {
             if (active)
             {
+                if (KeyBindingDefOf.Cancel.KeyDownEvent)
+                {
+                    Event.current.Use();
+                    Cancel();
+                    return;
+                }
+
                 if (CommandPalette.Settings.CloseIfSomethingSelected && Find.Selector.NumSelected > 0)
                 {
-                    // we selected something, close the palette
                     Cancel();
                     return;
                 }
@@ -186,9 +192,8 @@ namespace CommandPalette
                    .Bounded(new Vector2(UI.screenWidth, UI.screenHeight));
 
                 float fade = GetFadeOut(UI.MousePositionOnUIInverted, canvas);
-                if (fade > .95f || KeyBindingDefOf.Cancel.KeyDownEvent)
+                if (fade > .95f)
                 {
-                    Event.current.Use(); // cancel event is used, stop it from bubbling (e.g. bringing up the menu)
                     Cancel();
                     return;
                 }
@@ -199,7 +204,6 @@ namespace CommandPalette
                 paletteCanvas.position /= CommandPalette.Settings.PaletteScale;
                 paletteCanvas.size /= CommandPalette.Settings.PaletteScale;
                 DoSearch(searchCanvas);
-                Utilities.ApplyUIScale(Prefs.UIScale * CommandPalette.Settings.PaletteScale);
                 DoPalette(paletteCanvas, fade);
                 Utilities.ApplyUIScale(Prefs.UIScale);
             }
@@ -244,6 +248,11 @@ namespace CommandPalette
             Color fadeColor = new Color(1f, 1f, 1f, 1 - fade);
             IEnumerable<Designator> designators = Query.NullOrEmpty() ? VisibleRecentlyUsed : FilteredDesignators;
             GizmoRenderParms parms = new();
+
+            Designator _interacted = null;
+            GizmoResult _interactionResult = new();
+
+            Utilities.ApplyUIScale(Prefs.UIScale * CommandPalette.Settings.PaletteScale);
             foreach (Designator designator in designators)
             {
                 // add 10 px of wiggle room for rounding errors
@@ -262,22 +271,30 @@ namespace CommandPalette
                 designator.defaultIconColor = fadeColor;
                 GUI.color = fadeColor;
                 GizmoResult result = designator.GizmoOnGUI(pos, GIZMO_SIZE, parms);
-                GenUI.AbsorbClicksInRect(new Rect(pos, GIZMO_SIZE_VECTOR));
                 designator.defaultIconColor = iconColor;
                 pos.x += GIZMO_SIZE + MARGIN;
 
 
-                switch (result.State)
+                if (result.State >= GizmoState.Mouseover)
+                {
+                    _interacted = designator;
+                    _interactionResult = result;
+                }
+
+            }
+            
+            Utilities.ApplyUIScale(Prefs.UIScale);
+
+            if (_interacted != null)
+            {
+                switch (_interactionResult.State)
                 {
                     case GizmoState.Interacted:
-                    case GizmoState.OpenedFloatMenu when designator.RightClickFloatMenuOptions.FirstOrDefault() == null:
-                        Select(designator, result);
-                        GUI.FocusControl("Nowhere");
-                        return;
-                    case GizmoState.OpenedFloatMenu when designator.RightClickFloatMenuOptions.FirstOrDefault() != null:
-                        Find.WindowStack.Add(new FloatMenu(designator.RightClickFloatMenuOptions.ToList()));
-                        return;
-                    default:
+                    case GizmoState.OpenedFloatMenu when _interacted.RightClickFloatMenuOptions.FirstOrDefault() == null:
+                        Select(_interacted, _interactionResult);
+                        break;
+                    case GizmoState.OpenedFloatMenu:
+                        Find.WindowStack.Add(new FloatMenu(_interacted.RightClickFloatMenuOptions.ToList()));
                         break;
                 }
             }
@@ -295,8 +312,10 @@ namespace CommandPalette
             _recentlyUsed.Add(designator);
             designator.ProcessInput(result.InteractEvent);
 
-
-            Cancel();
+            if (CommandPalette.Settings.CloseAfterSelection)
+            {
+                Cancel();
+            }
         }
     }
 }
