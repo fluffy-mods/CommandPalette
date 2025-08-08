@@ -1,0 +1,33 @@
+all your commands in one place
+
+[img]https://headers.karel-kroeze.nl/title/Features.png[/img]
+
+Ever been annoyed about the ever increasing number of architect categories? Can't find anything in the 'Furniture', 'More Furniture', 'Furniture Plus' and 'RimKEA Furniture' tabs?
+
+Panic no longer, for Command Palette is here.
+
+[img]https://i.imgur.com/NfyoajE.gif[/img]
+
+Right-click with nothing selected to open the command palette.
+
+Recently used commands will be immediately shown. Type a few letters to show commands whose name or description are similar.
+
+[img]https://headers.karel-kroeze.nl/title/Known%20Issues.png[/img]
+
+None
+
+[img]https://headers.karel-kroeze.nl/title/Thanks%20to.png[/img]
+
+[img]https://headers.karel-kroeze.nl/title/Think%20you%20found%20a%20bug%3F.png[/img]
+
+Please read [url=http://steamcommunity.com/sharedfiles/filedetails/?id=725234314]the short guide on got to report a bug[/url], and then create a bug report [url=https://github.com/fluffy-mods/CommandPalette/issues]on GitHub[/url].
+
+[img]https://headers.karel-kroeze.nl/title/Other%20versions.png[/img]
+
+See the [url=https://github.com/fluffy-mods/CommandPalette/releases]GitHub releases[/url] page for a list of all releases of Command Palette. This includes old releases, the current release, and sometimes new beta versions that aren't quite ready for a steam release.
+
+[img]https://headers.karel-kroeze.nl/title/License.png[/img]
+
+My goal is for all my modding to be free to use and re-use in any way you want, as long as you give me credit for the original work. All code I wrote is licensed under the MIT license. All original creative content (e.g., text, icons, sounds) is licensed under the CC-BY 4.0 license.
+
+Some of the code and content in this mod may be authored by other people, and have a different license. If this is the case, the original author(s) and license will either be given in the source code, or be in a 'LICENSE' file next to the related content. Please do not decompile my mods, but use the original source code available on [url=https://github.com/fluffy-mods/CommandPalette]https://github.com/fluffy-mods/CommandPalette[/url] so this information is preserved.

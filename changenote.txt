@@ -1,0 +1,7 @@
+- Fluffy :: release v2.4.143
+- Fluffy :: release v2.4.142
+- Fluffy :: keybind shouldn't be part of the search query (fixes #9)
+- Fluffy :: fix stuff selection being suppressed on small scale factors (closes #12)
+- Fluffy :: 1.6 update + close after selection /w options
+- Fluffy :: release v2.3.122
+- Fluffy :: initial build for 1.4
