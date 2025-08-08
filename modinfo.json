@@ -6,7 +6,7 @@
     "version": {
         "major": 2,
         "minor": 3,
-        "build": 140
+        "build": 142
     },
     "author": {
         "name": "Fluffy",
@@ -19,6 +19,15 @@
         "url": "https://github.com/fluffy-mods/CommandPalette"
     },
     "changelog": [
+        {
+            "date": "2025-08-08T15:06:29.000Z",
+            "message": "keybind shouldn't be part of the search query (fixes #9)",
+            "author": {
+                "name": "Fluffy",
+                "email": "fluffy.l2032@gmail.com"
+            },
+            "hash": "cf387afcf0db3e6b147f31ec64c39dda45223a3c"
+        },
         {
             "date": "2025-08-08T14:34:29.000Z",
             "message": "fix stuff selection being suppressed on small scale factors (closes #12)",
