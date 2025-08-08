@@ -6,7 +6,7 @@
     "version": {
         "major": 2,
         "minor": 3,
-        "build": 136
+        "build": 140
     },
     "author": {
         "name": "Fluffy",
@@ -19,6 +19,24 @@
         "url": "https://github.com/fluffy-mods/CommandPalette"
     },
     "changelog": [
+        {
+            "date": "2025-08-08T14:34:29.000Z",
+            "message": "fix stuff selection being suppressed on small scale factors (closes #12)",
+            "author": {
+                "name": "Fluffy",
+                "email": "fluffy.l2032@gmail.com"
+            },
+            "hash": "03ea1fb730733f206237369c7aefa33e98c53f28"
+        },
+        {
+            "date": "2025-08-08T14:33:29.000Z",
+            "message": "1.6 update + close after selection /w options",
+            "author": {
+                "name": "Fluffy",
+                "email": "fluffy.l2032@gmail.com"
+            },
+            "hash": "f9dc3ba00c6de6d447ff7be49dad3c84e1e3ea91"
+        },
         {
             "date": "2022-10-14T20:32:49.000Z",
             "message": "release v2.3.122",

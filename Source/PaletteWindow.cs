@@ -24,10 +24,15 @@ namespace CommandPalette
         }
 
         private Vector2 position;
-        private bool active;
-        private bool setFocus;
+        private bool _active;
 
         private static string _query = "";
+
+        private enum SearchFieldStatus
+        {
+            Focus, Clear, Ready
+        }
+        private SearchFieldStatus _searchFieldStatus = SearchFieldStatus.Focus;
 
         protected static string Query
         {
@@ -49,7 +54,6 @@ namespace CommandPalette
         private const int MARGIN = 6;
         private const int SEARCH_HEIGHT = 50;
         private const int GIZMO_SIZE = 75;
-        private Vector2 GIZMO_SIZE_VECTOR = new(GIZMO_SIZE, GIZMO_SIZE);
 
         private const int FADE_OUT_START_DISTANCE = 10;
         private const int FADE_OUT_FINISH_DISTANCE = 200;
@@ -105,8 +109,7 @@ namespace CommandPalette
         {
             get
             {
-                _filteredDesignators ??= AllDesignators.OrderByDescending(Similarity);
-                return _filteredDesignators.Where(d => d.Visible);
+                return _filteredDesignators ??= AllDesignators.Where(d => d.Visible).OrderByDescending(Similarity);
             }
         }
 
@@ -120,9 +123,13 @@ namespace CommandPalette
         public static float Similarity(Designator des)
         {
             float name = Similarity(des.Label, Query);
-            if (des.Label.ToUpperInvariant().Contains(Query.ToUpperInvariant()))
+            if (des.Label.ToUpperInvariant().StartsWith(Query.ToUpperInvariant()))
             {
-                name *= 3f; // give exact (partial) name matches a much higher weight
+                name *= 4f; // give exact (partial) name matches a much higher weight
+            }
+            else if (des.Label.ToUpperInvariant().Contains(Query.ToUpperInvariant()))
+            {
+                name *= 2f;
             }
 
             float desc = Similarity(des.Desc, Query);
@@ -152,15 +159,15 @@ namespace CommandPalette
                      && (CommandPalette.Settings.KeyBinding?.JustPressed ?? false))
                 {
                     Event.current.Use();
-
-                    if (active)
+                    
+                    if (_active)
                     {
                         Cancel();
                     }
                     else
                     {
-                        active = true;
-                        setFocus = true;
+                        _active = true;
+                        _searchFieldStatus = SearchFieldStatus.Focus;
                         position = UI.MousePositionOnUIInverted - new Vector2(GIZMO_SIZE / 2f, SEARCH_HEIGHT);
                     }
                 }
@@ -173,7 +180,7 @@ namespace CommandPalette
 
         public override void GameComponentOnGUI()
         {
-            if (active)
+            if (_active)
             {
                 if (KeyBindingDefOf.Cancel.KeyDownEvent)
                 {
@@ -211,7 +218,7 @@ namespace CommandPalette
 
         public void Cancel()
         {
-            active = false;
+            _active = false;
             position = Vector2.zero;
             Query = "";
             GUI.color = Color.white;
@@ -232,14 +239,27 @@ namespace CommandPalette
         {
             Text.Font = GameFont.Medium;
             GUI.SetNextControlName("searchField");
-            Query = Widgets.TextField(canvas, Query);
-            if (setFocus)
-            {
-                setFocus = false;
-                GUI.FocusControl("searchField");
-            }
-
+            _query = Widgets.TextField(canvas, Query);
             Text.Font = GameFont.Small;
+
+            // if we focus and clear on the first frame, clearing the value doesn't 
+            // seem to take effect. Instead, let's go through this in stages across
+            // the first two frames.
+            switch (_searchFieldStatus)
+            {
+                case SearchFieldStatus.Focus:
+                    GUI.FocusControl("searchField");
+                    _searchFieldStatus = SearchFieldStatus.Clear;
+                    break;
+                case SearchFieldStatus.Clear:
+                    Query = "";
+                    _searchFieldStatus = SearchFieldStatus.Ready;
+                    break;
+                case SearchFieldStatus.Ready:
+                    Query = _query;
+                    break;
+            }
+            
         }
 
         public void DoPalette(Rect canvas, float fade)
