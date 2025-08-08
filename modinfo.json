@@ -6,7 +6,7 @@
     "version": {
         "major": 2,
         "minor": 4,
-        "build": 149
+        "build": 150
     },
     "author": {
         "name": "Fluffy",
@@ -19,6 +19,15 @@
         "url": "https://github.com/fluffy-mods/CommandPalette"
     },
     "changelog": [
+        {
+            "date": "2025-08-08T18:20:39.000Z",
+            "message": "release v2.4.149",
+            "author": {
+                "name": "Fluffy",
+                "email": "fluffy.l2032@gmail.com"
+            },
+            "hash": "865ca66dc87e0155bc116345e62a3b3ce249a729"
+        },
         {
             "date": "2025-08-08T18:19:59.000Z",
             "message": "release v2.4.148",
